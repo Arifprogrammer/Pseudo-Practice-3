@@ -1,0 +1,83 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+.container{
+    width: 25%;
+    height: 40vh;
+    position: relative;
+    /* --------------eikhane position:relative use korar karon .card_text a position:absolute use kora hoise tai-------------- */
+    margin: auto;
+}
+.card{
+    height: 100%;
+    width: 100%;
+    position: relative;
+/* --------------eikhane position:relative use korar karon .card::before,after a position:absolute use kora hoise tai-------------- */
+}
+.card img{
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+.card_text{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.651);
+    color: aliceblue;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.card_text h1, p{
+    margin: 0px;
+}
+/* --------------niche not(p) use korar karon .card_text div a <p> chara baki ja ase...ter upor kaj hobe..tai <h1> er upor kaj hoise------------------ */
+.card_text :not(p){
+    padding-bottom: 10px;
+}
+.container:hover .card_text{
+    opacity: 1;
+}
+.card::before, .card::after{
+    content: "";
+    top: 6%;
+    left: 6%;
+    bottom: 6%;
+    right: 6%;
+    position: absolute;
+    opacity: 0;
+    z-index: 3;
+}
+.card::before{
+    transition: opacity 0.1s ease-out;
+    transition: transform 0.2s ease-out;
+    transform: scale(0, 1);
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg,rgb(207, 253, 0),rgb(255, 255, 255));
+    border-image-slice: 1;
+}
+.container:hover .card::before{
+    opacity: 0.8;
+    transform: scale(1.07, 1);
+}
+.card::after{
+    transition: opacity 0.1s ease-out;
+    transition: transform 0.2s ease-out;
+    transform: scale(1, 0);
+    border-left: 3px solid;
+    border-right: 3px solid;
+    border-image: linear-gradient(90deg,rgb(207, 253, 0),rgb(255, 255, 255));
+    border-image-slice: 1;
+}
+.container:hover .card::after{
+    opacity: 0.8;
+    transform: scale(1, 1.07);
+}
